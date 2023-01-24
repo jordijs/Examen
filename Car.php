@@ -1,5 +1,12 @@
 <?php
 
+enum fuel {
+    case gasoline;
+    case oil;
+    case hybrid;
+    case electric;
+};
+
 class Car {
     private $cilinders;
     private $brand;
@@ -7,6 +14,7 @@ class Car {
     private $fuel;
     private $colour;
 
+    
     public function __construct($cilinders, $brand, $plate, $fuel, $colour)
     {
         $this->cilinders = $cilinders;
@@ -38,7 +46,7 @@ class Car {
         return "<Cilinders: " . $this->cilinders . "<br>
         Brand: " . $this->brand . "<br>
         Plate: " . $this->plate . "<br>
-        Fuel: " . $this->fuel . "<br>
+        Fuel: " . $this->fuel->name . "<br>
         Colour: " . $this->colour;
     }
 

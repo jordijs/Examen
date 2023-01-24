@@ -2,30 +2,36 @@
 
   class CarDealer {
 
-    public function paintColours($cars){
-      $carsNum = count($cars);
+    private $cars;
+
+    public function __construct($cars){
+      $this->cars = $cars;
+    }
+
+    public function paintColours(){
+      $carsNum = count($this->cars);
       for ($carPosition = 0; $carPosition < $carsNum; $carPosition++) {
         if (($carPosition % 2) == 0) {
-          $cars[$carPosition]->setColour("blue");
-        } else {$cars[$carPosition]->setColour("red");
+          $this->cars[$carPosition]->setColour("blue");
+        } else {$this->cars[$carPosition]->setColour("red");
         }
       }
     }
 
-    public function getGasolineBrands($cars){
+    public function getGasolineBrands(){
       $gasolineBrands = array();
-      foreach ($cars as $car) {
+      foreach ($this->cars as $car) {
         $fuel = $car->getFuel();
-        if ($fuel == "gasoline") {
+        if ($fuel == fuel::gasoline) {
           array_push($gasolineBrands, $car->getBrand());
         } 
       }
       return $gasolineBrands;
     }
 
-    public function echoAllCars($cars){
+    public function echoAllCars(){
       $i = 0;
-      foreach ($cars as $car) {
+      foreach ($this->cars as $car) {
         echo "Car " . $i . "= " . $car->toString() . "<br><br>";
         $i++;
       }
